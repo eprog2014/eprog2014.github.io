@@ -28,6 +28,11 @@ a:hover {
 h1 a {
     font-size: 1.2em;
     line-height: 1.4em;
+	width: calc(100% - 1em);
+	display: block;
+	text-align: center;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 }
 
 header a, footer a {
@@ -47,7 +52,7 @@ blockquote {
     padding: 0 1em;
 }
 
-body > header, article, body > footer {
+body > header > nav, article, body > footer {
     padding-left: calc(12% - 1.6em);
     padding-right: calc(12% - 1.6em);
 }
