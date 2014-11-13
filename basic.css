@@ -54,7 +54,7 @@ blockquote {
 	background-color: ghostwhite;
 }
 
-body > header > nav, article, body > footer {
+body > header > nav, article > footer, article > p, article > div, body > footer {
     padding-left: calc(12% - 1.6em);
     padding-right: calc(12% - 1.6em);
 }
