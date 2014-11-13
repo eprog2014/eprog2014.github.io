@@ -40,7 +40,6 @@ header a, footer a {
 }
 
 pre {
-    overflow: auto;
     padding: 1em;
     font-size: .8em;
     line-height: 1.4em;
@@ -102,4 +101,19 @@ nav li {
 nav ul {
     padding: 1em 0;
     margin: 0;
+}
+
+table.highlighttable {
+	table-layout: fixed;
+	width: 100%;
+}
+
+table.highlighttable td.linenos {
+	width: 50px;
+}
+
+table.highlighttable td.code div{
+	overflow-x: auto;
+	width: 100%;
+	max-width: calc(100%);
 }
