@@ -1,0 +1,21 @@
+# Site settings
+title: A Beginner's Guide to Eiffel
+email: christian@vonrueti.ch
+description: "Programming with Eiffel for non-programmers"
+baseurl: "/"
+url: "/"
+twitter_username: user
+github_username: alshain
+disqus_username: false
+isso_domain: comments.mysite.org
+
+# Build settings
+markdown: redcarpet
+permalink: /:title/
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
