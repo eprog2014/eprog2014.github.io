@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: .1em;
 }
 
-a, a#selected {
+a {
     transition: color .2s ease-out;
     color: royalblue;
     text-decoration: none;
