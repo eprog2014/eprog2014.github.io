@@ -91,49 +91,99 @@ feature {NONE}
         do
             -- Initially, both attributes are False by default
             -- hence, the invariant is satisfied
-            
-			-- We can now modify both attributes
-            one := True
-            two := True
-			
-			f1
-			
-			two := False
-			
-			-- Invariant is satisfied 
-			--    (if the program hadn't crashed in f1)
-        end
-		
-	f1
-		do
-			-- Invariant still satisfied
-			
+
 			-- Let's now adjust the attributes
-			-- by using features to compute their values
+			-- by using extra features to compute and set their values
 			
 			-- The invariant will be checked before
 			--   the following instruction is completed.
-			-- The invariant will be invalidated
-			one := compute_one
+			compute_and_set_one
 			
-			two := compute_two
+			compute_and_set_two
 		end
 		
-	compute_one: BOOLEAN
+	compute_and_set_one
 		do
-			Result := False
+			-- Do lots of other stuff to arrive at the value we need
+			one := False
+			-- Upon exiting this procedure, 
+			-- the invariant is to be checked as per our policy.
+			-- However, since only one attribute has been changed so far,
+			-- the invariant is violated and the program will abort.		
 		end
 		
-	compute_two: BOOLEAN
+	compute_and_set_two
 		do
-			Result := False
+			-- Do lots of other stuff to arrive at the value we need
+			two := False
 		end
 invariant
     both_the_same: one = two
 end
 {% endhighlight %}
 
-Clearly, requiring that the invariant hold at multiple points within one single feature (e.g. `f1`) is not practical in general.
+In practice, it is often useful to implement one feature by dividing it into multiple different parts, where each part is itself a simpler and shorter feature. For one, this allows to give different parts of the code different names, such that the code becomes self documenting. In the above example, we have used [this technique, usually called Extract Method](http://www.refactoring.com/catalog/extractMethod.html), twice. 
+
+Another possibility would have been to only extract the right-hand side of the assignment. In that case, we would have needed to make our extra features functions instead of procedures, such that they can *return* a result. This is demonstrated below, also note, that the names of the features have been changed to reflect this difference in semantics.
+
+{% highlight eiffel linenos=table %}
+-- Scenario: Class Invariant checked before do and after end
+class
+    APPLICATION
+
+inherit
+    ARGUMENTS
+
+create
+    make
+
+feature {NONE}
+    one: BOOLEAN
+    two: BOOLEAN
+
+    make
+			-- Special case, invariant must not hold 
+			-- at beginning of creation procedure
+        do
+            -- Initially, both attributes are False by default
+            -- hence, the invariant is satisfied
+
+			-- Let's now adjust the attributes
+			-- by using functions to compute their values
+			
+			-- The invariant will be checked twice before
+			--   the following instruction is completed.
+			one := compute_one
+			
+			
+			-- Upon entering compute_two, the invariant is checked.
+			-- At that point, the invariant does not hold
+			-- so the program will be aborted.
+			two := compute_two
+		end
+		
+	compute_one: BOOLEAN
+		do
+			one := False
+			-- Upon exiting this function, 
+			-- the invariant is to be checked as per our policy.
+			-- By that point, the attribute has not yet been set.
+			-- Hence, the program will be able to set the attribute.
+		end
+		
+	compute_two: BOOLEAN
+		do
+			-- Upon entering this function, the invariant is checked.
+			-- Since `one` has been set to False but `two`
+			-- is still True, the program will abort.
+			two := False
+		end
+invariant
+    both_the_same: one = two
+end
+{% endhighlight %}
+
+The aforementioned technique, extract method, is very useful in practice, thus it would be unwise to check the invariant upon entering and exiting every routine: Eiffel would prevent us from leveraging this powerful idea for code organization on many occasions and our code would have to be more long-winded in many situations just to get those additional safety guarantees.
 
 Actual Eiffel Semantics
 ========================
