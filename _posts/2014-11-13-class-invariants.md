@@ -343,9 +343,9 @@ The class invariant serves to help you maintain a consistent object for whenever
 
 You still have the possibility, however, to force checking the class invariant in your object if you so desire by explicitly prefix a feature call with `Current.`
 
-<sup>1</sup>: The above article uses plural and singular of invariants interchangeably. Technically, Eiffel doesn't need to support having multiple invariants per class, because multiple constrains may just be combined into one invariant by using `and`. However, by using multiple different invariants, Eiffel can easily provide feedback on which of the different possibly unrelated invariants has failed instead of only alerting you that the entire invariant has failed.
+<sup>1</sup>The above article uses plural and singular of invariants interchangeably. Technically, Eiffel doesn't need to support having multiple invariants per class, because multiple constrains may just be combined into one invariant by using `and`. However, by using multiple different invariants, Eiffel can easily provide feedback on which of the different possibly unrelated invariants has failed instead of only alerting you that the entire invariant has failed.
 
 <sup>2</sup>This addresses the second bullet point on how the question could have been interpreted differently. One could have taken it to mean, that invariants of other objects (even from other classes) are being checked on calls.
 
-<sup>3</sup>: Checking the class invariant when returning from a qualified call also protects from ending up in an unexpectedly inconsistent state in mutual recursion.
+<sup>3</sup>Checking the class invariant when returning from a qualified call also protects from ending up in an unexpectedly inconsistent state in mutual recursion.
 
