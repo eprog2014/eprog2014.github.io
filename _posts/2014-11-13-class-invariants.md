@@ -1,6 +1,6 @@
 ﻿---
-title:  "When class invariants are checked"
-author: "Christian Vonrüti"
+title:  When class invariants are checked
+author: Christian Vonrüti
 categories: mock-exam
 ---
 
