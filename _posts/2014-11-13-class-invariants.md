@@ -66,7 +66,9 @@ Relaxing
 
 We could relax the guarantee that the object must satisfy the invariant after every instruction to only checking the invariant at the beginning and end of each routine, i.e. both procedure and function.
 
+With this new policy, the above example could execute correctly.
 
+Now follows an example as to why this new policy is too strict as well and how prevents us from doing things we will often want to do in everyday programming.
 
 {% highlight eiffel linenos=table %}
 -- Scenario: Class Invariant checked before do and after end
