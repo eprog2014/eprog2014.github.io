@@ -1,6 +1,6 @@
 ﻿---
 title:  When class invariants are checked
-author: Christian Vonrüti
+author: Christian Vonrütiii
 categories: mock-exam
 ---
 
