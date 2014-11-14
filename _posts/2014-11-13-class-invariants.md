@@ -58,7 +58,8 @@ invariant
 end
 {% endhighlight %}
 
-This may be an artificial example, but being able to specify constraints between different features is very useful in practice. Thus, enforcing the invariant after every single instruction is not useful in practice.
+
+This may be a toy example, but being able to specify constraints between different features is very useful in practice. Thus, enforcing the invariant after every single instruction is not useful in practice.
 
 Relaxing
 ========
