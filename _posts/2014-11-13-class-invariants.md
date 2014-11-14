@@ -22,7 +22,7 @@ Invariants of a class specify consistency requirements for all its objects.
 
 One such requirement can either be met or violated by an object. Consequently, a requirement is expressed by a `boolean expression`.
 
-Since boolean expressions allow to express dependencies between different features, checking an invariant after every single instruction is useful. Suppose we had expressed a dependency on two attributes and wanted to change their values, we can only do so one after the other. Before getting the chance to re-satisfy the class invariant by changing the second attribut after having modified the first, the program would already have been aborted due to the first change violating the class invariant.
+Since boolean expressions allow to express dependencies between different features, checking an invariant after every single instruction is useful. Suppose we had expressed a dependency on two attributes and wanted to change their values, we can only do so one after the other. Before getting the chance to re-satisfy the class invariant by changing the second attribute after having modified the first, the program would already have been aborted due to the first change violating the class invariant.
 
 
 {% highlight eiffel linenos=table %}
