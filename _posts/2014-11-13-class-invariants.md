@@ -196,7 +196,7 @@ However, if we were to replace the `fix_number` call and make the implicit recei
 
 If we were to omit the call to `fix_number` entirely, the program would crash upon returning from `set_number` to line 19/20 of `APPLICATION`.
 
-This next example will not abort due to a invariant violation:
+This next example will not abort due to an invariant violation:
 
 {% highlight eiffel linenos=table %}
 class
@@ -260,7 +260,7 @@ When we first call `print_nubmer`, the class invariant of the one `EVEN_NUMBER` 
 
 This is ok, because as long as nobody (as in: a different object, such as the one denoted by `Io`) accesses a feature of an object in an inconsistent state, nothing unexpected can happen.
 
-Whenver an object wants to access a feature of a different object, it needs to do so via a qualified call. If the call weren't qualified, the reciver would implicitly be `Current` and accessing a different object than itself via `Current` is impossible.
+Whenever an object wants to access a feature of a different object, it needs to do so via a qualified call. If the call weren't qualified, the receiver would implicitly be `Current` and accessing a different object than itself via `Current` is impossible.
 
 Optimizing Eiffel Semantics
 ===========================
@@ -271,9 +271,9 @@ One could say that the goal of class invariants is the following:
 
 Now suppose we would omit checking the invariant before returning from a qualified call.
 
-You can now write a program, that correctly  performs some computation on an object denoted by `x` but leaves that object in an inconsistent state. Since the computation may still be computed correctly and the its effects may be validated by post-conditions as usual, there is no problem.
+You can now write a program that correctly  performs some computation on an object denoted by `x` but leaves that object in an inconsistent state. Since the computation may still be computed correctly and its effects may be validated by post-conditions as usual, there is no problem.
 
-However, say you you call that features on `x` at 100 different places in your program and when you place one more call to the program, it will abort due to a class invariant violation, you may not readily identify the last call prior to the 101st call that left the class invariant violated. As such, it's more difficult to track down where your program has actually failed.
+However, say you call that feature on `x` at 100 different places in your program and when you place one more call to the program, it will abort due to a class invariant violation, you may not readily identify the last call prior to the 101st call that left the class invariant violated. As such, it's more difficult to track down where your program has actually failed.
 
 Wikipedia [writes on the matter](http://en.wikipedia.org/wiki/Fail-fast):
 
@@ -286,7 +286,7 @@ Summary
 
 The class invariant serves to help you maintain a consistent object for whenever some object could want to access any of its features, while still giving you the flexibility to temporarily violate the class invariant in your own object (i.e. of the class you're programming). Maintaining sight of where and how you invalidate your class invariant is much easier, when you don't have to consider the entire program, but only a very small part.
 
-You still have the possibility, however, to force checking the class invariant in your object if you so desire by explicitely prefix a feature call with `Current.`
+You still have the possibility, however, to force checking the class invariant in your object if you so desire by explicitly prefix a feature call with `Current.`
 
 Footnote: The above article uses plural and singular of invariants interchangeably. Technically, Eiffel doesn't need to support having multiple invariants per class, because multiple constrains may just be combined into one invariant by using `and`. However, by using multiple different invariants, Eiffel can easily provide feedback on which of the different possibly unrelated invariants has failed instead of only alerting you that the entire invariant has failed.
 
