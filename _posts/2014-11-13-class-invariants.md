@@ -18,7 +18,7 @@ There are two things amiss with this statement:
 What are class invariants?
 ===========================
 
-A class invariant specifies a consistency requirement for all objects of a certain class.
+Invariants of a class specify consistency requirements for all its objects.
 
 One such requirement can either be met or violated by an object. Consequently, a requirement is expressed by a `boolean expression`.
 
