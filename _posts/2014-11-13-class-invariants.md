@@ -15,7 +15,7 @@ There are two things amiss with this statement:
 * Class invariants are not checked on every procedure call
 * It does not state *which* class' invariant is checked on a procedure call
 
-What are class invariants?
+What are class invariants<sup>1</sup>?
 ===========================
 
 Invariants of a class specify consistency requirements for all its objects.
@@ -279,7 +279,7 @@ Wikipedia [writes on the matter](http://en.wikipedia.org/wiki/Fail-fast):
 
 > Finding the cause of a failure is easier in a fail-fast system, because the system reports the failure with as much information as possible as close to the time of failure as possible. In a fault-tolerant system, the failure might go undetected, whereas in a system that is neither fault-tolerant nor fail-fast the failure might be temporarily hidden until it causes some seemingly unrelated problem later.
 
-This is one reason why optimizing it is not very practical.
+This is one<sup>2</sup> reason why optimizing it is not very practical.
 
 Summary
 =======
@@ -288,7 +288,7 @@ The class invariant serves to help you maintain a consistent object for whenever
 
 You still have the possibility, however, to force checking the class invariant in your object if you so desire by explicitly prefix a feature call with `Current.`
 
-Footnote: The above article uses plural and singular of invariants interchangeably. Technically, Eiffel doesn't need to support having multiple invariants per class, because multiple constrains may just be combined into one invariant by using `and`. However, by using multiple different invariants, Eiffel can easily provide feedback on which of the different possibly unrelated invariants has failed instead of only alerting you that the entire invariant has failed.
+<sup>1</sup>: The above article uses plural and singular of invariants interchangeably. Technically, Eiffel doesn't need to support having multiple invariants per class, because multiple constrains may just be combined into one invariant by using `and`. However, by using multiple different invariants, Eiffel can easily provide feedback on which of the different possibly unrelated invariants has failed instead of only alerting you that the entire invariant has failed.
 
-Footenote: Checking the class invariant when returning from a qualified call also protects from ending up in an unexpectedly inconsistent state in mutual recursion.
+<sup>2</sup>: Checking the class invariant when returning from a qualified call also protects from ending up in an unexpectedly inconsistent state in mutual recursion.
 
