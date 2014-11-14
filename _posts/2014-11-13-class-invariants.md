@@ -188,7 +188,7 @@ The aforementioned technique, extract method, is very useful in practice, thus i
 Actual Eiffel Semantics
 ========================
 
-Invariants are checked, whenever there is a qualified call to a feature and a return therefrom.
+Invariants are checked, whenever there is a qualified call to a feature and a return therefrom. More precisely, the invariants of the callee (i.e. the one, that is being called, the target) are checked and those same invariants when returning from those same call<sup>2</sup>.
 
 A qualified call is a feature access of the form `target.feature_name`. The previous examples *only* used unqualified feature calls such as `compute_one` or `compute_two`, where the target (or receiver) of the call---i.e. the object on which the feature will be called is *not* explicitely specified.
 
@@ -334,7 +334,7 @@ Wikipedia [writes on the matter](http://en.wikipedia.org/wiki/Fail-fast):
 
 > Finding the cause of a failure is easier in a fail-fast system, because the system reports the failure with as much information as possible as close to the time of failure as possible. In a fault-tolerant system, the failure might go undetected, whereas in a system that is neither fault-tolerant nor fail-fast the failure might be temporarily hidden until it causes some seemingly unrelated problem later.
 
-This is one<sup>2</sup> reason why optimizing it is not very practical.
+This is one<sup>3</sup> reason why optimizing it is not very practical.
 
 Summary
 =======
@@ -345,5 +345,7 @@ You still have the possibility, however, to force checking the class invariant i
 
 <sup>1</sup>: The above article uses plural and singular of invariants interchangeably. Technically, Eiffel doesn't need to support having multiple invariants per class, because multiple constrains may just be combined into one invariant by using `and`. However, by using multiple different invariants, Eiffel can easily provide feedback on which of the different possibly unrelated invariants has failed instead of only alerting you that the entire invariant has failed.
 
-<sup>2</sup>: Checking the class invariant when returning from a qualified call also protects from ending up in an unexpectedly inconsistent state in mutual recursion.
+<sup>2</sup>This addresses the second bullet point on how the question could have been interpreted differently. One could have taken it to mean, that invariants of other objects (even from other classes) are being checked on calls.
+
+<sup>3</sup>: Checking the class invariant when returning from a qualified call also protects from ending up in an unexpectedly inconsistent state in mutual recursion.
 
