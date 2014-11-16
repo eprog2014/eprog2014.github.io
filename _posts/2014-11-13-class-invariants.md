@@ -68,7 +68,7 @@ We could relax the guarantee that the object must satisfy the invariant after ev
 
 With this new policy, the above example could execute correctly.
 
-Now follows an example as to why this new policy is too strict as well and how prevents us from doing things we will often want to do in everyday programming.
+Now follows an example as to why this new policy is too strict as well and how it prevents us from doing things we will often want to do in everyday programming.
 
 {% highlight eiffel linenos=table %}
 -- Scenario: Class Invariant checked before do and after end
@@ -311,7 +311,7 @@ invariant
 {% endhighlight %}
 
 
-When we first call `print_nubmer`, the class invariant of the one `EVEN_NUMBER` object is invalidated. Inside `print_number`, there is a qualified call `Io.put_integer()` however. But this call apparently does not trigger a contract check on `EVEN_NUMBER`.
+When we first call `print_number`, the class invariant of the one `EVEN_NUMBER` object is invalidated. Inside `print_number`, there is a qualified call `Io.put_integer()` however. But this call apparently does not trigger a contract check on `EVEN_NUMBER`.
 
 This is ok, because as long as nobody (as in: a different object, such as the one denoted by `Io`) accesses a feature of an object in an inconsistent state, nothing unexpected can happen.
 
@@ -339,11 +339,11 @@ This is one<sup>3</sup> reason why optimizing it is not very practical.
 Summary
 =======
 
-The class invariant serves to help you maintain a consistent object for whenever some object could want to access any of its features, while still giving you the flexibility to temporarily violate the class invariant in your own object (i.e. of the class you're programming). Maintaining sight of where and how you invalidate your class invariant is much easier, when you don't have to consider the entire program, but only a very small part.
+The class invariant helps you maintain a consistent object for whenever some object could want to access any of its features, while still giving you the flexibility to temporarily violate the class invariant in your own object (i.e. of the class you're programming). Maintaining sight of where and how you invalidate your class invariant is much easier, when you don't have to consider the entire program, but only a very small part.
 
 You still have the possibility, however, to force checking the class invariant in your object if you so desire by explicitly prefix a feature call with `Current.`
 
-<sup>1</sup>The above article uses plural and singular of invariants interchangeably. Technically, Eiffel doesn't need to support having multiple invariants per class, because multiple constrains may just be combined into one invariant by using `and`. However, by using multiple different invariants, Eiffel can easily provide feedback on which of the different possibly unrelated invariants has failed instead of only alerting you that the entire invariant has failed.
+<sup>1</sup>The above article uses plural and singular of invariants interchangeably. Technically, Eiffel doesn't need to support having multiple invariants per class, because multiple constraints may just be combined into one invariant by using `and`. However, by using multiple different invariants, Eiffel can easily provide feedback on which of the different possibly unrelated invariants has failed instead of only alerting you that the entire invariant has failed.
 
 <sup>2</sup>This addresses the second bullet point on how the question could have been interpreted differently. One could have taken it to mean, that invariants of other objects (even from other classes) are being checked on calls.
 
