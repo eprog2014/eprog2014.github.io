@@ -341,7 +341,7 @@ Summary
 
 The class invariant helps you maintain a consistent object for whenever some object could want to access any of its features, while still giving you the flexibility to temporarily violate the class invariant in your own object (i.e. of the class you're programming). Maintaining sight of where and how you invalidate your class invariant is much easier, when you don't have to consider the entire program, but only a very small part.
 
-You still have the possibility, however, to force checking the class invariant in your object if you so desire by explicitly prefix a feature call with `Current.`
+You still have the possibility, however, to force checking the class invariant in your object by explicitly prefixing a feature call with `Current.`
 
 <sup>1</sup>The above article uses plural and singular of invariants interchangeably. Technically, Eiffel doesn't need to support having multiple invariants per class, because multiple constraints may just be combined into one invariant by using `and`. However, by using multiple different invariants, Eiffel can easily provide feedback on which of the different possibly unrelated invariants has failed instead of only alerting you that the entire invariant has failed.
 
