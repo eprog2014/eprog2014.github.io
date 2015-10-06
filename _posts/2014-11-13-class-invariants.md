@@ -164,7 +164,7 @@ feature {NONE}
 		
 	compute_one: BOOLEAN
 		do
-			one := False
+			Result := False
 			-- Upon exiting this function, 
 			-- the invariant is to be checked as per our policy.
 			-- By that point, the attribute has not yet been set.
@@ -176,7 +176,7 @@ feature {NONE}
 			-- Upon entering this function, the invariant is checked.
 			-- Since `one` has been set to False but `two`
 			-- is still True, the program will abort.
-			two := False
+			Result := False
 		end
 invariant
     both_the_same: one = two
